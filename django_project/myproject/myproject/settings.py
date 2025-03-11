@@ -129,9 +129,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-# Указываем кастомную модель пользователя
 AUTH_USER_MODEL = 'users.CustomUser'
 
-# Настройки медиафайлов
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
