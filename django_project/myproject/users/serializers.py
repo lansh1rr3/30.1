@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Payment, User
-from corses.models import Course, Lesson
+from corses .models import Course, Lesson
 
 
 class UserSerializer(serializers.ModelSerializer):
