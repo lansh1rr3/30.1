@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Payment, User
-from corses .models import Course, Lesson
+from .models import CustomUser, Payment
+from courses.models import Course, Lesson
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['id', 'email', 'phone', 'city', 'avatar']
         read_only_fields = ['id']
 
@@ -14,16 +14,16 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['email', 'password', 'phone', 'city', 'avatar']
 
-    def create(self, validate_data):
-        user = User.objects.create_user(
-            email=validate_data['email'],
-            password=validate_data['password'],
-            phone=validate_data.get('phone', ''),
-            city=validate_data.get('city', ''),
-            avatar=validate_data.get('avatar', None)
+    def create(self, validated_data):
+        user = CustomUser.objects.create_user(
+            email=validated_data['email'],
+            password=validated_data['password'],
+            phone=validated_data.get('phone', ''),
+            city=validated_data.get('city', ''),
+            avatar=validated_data.get('avatar', None)
         )
         return user
 
