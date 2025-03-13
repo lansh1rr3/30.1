@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from courses.views import CourseViewSet, LessonListAPIView, LessonCreateAPIView, LessonRetrieveAPIView, \
-    LessonUpdateAPIView, LessonDeleteAPIView
+    LessonUpdateAPIView, LessonDeleteAPIView, SubscriptionAPIView
 from users.views import UserViewSet, UserRegisterAPIView, UserDetailAPIView, PaymentViewSet, CustomTokenObtainPairView
 from rest_framework_simplejwt.views import TokenRefreshView
 from django.conf import settings
@@ -25,4 +25,5 @@ urlpatterns = [
                   path('api/lessons/<int:pk>/', LessonRetrieveAPIView.as_view(), name='lesson-detail'),
                   path('api/lessons/<int:pk>/update/', LessonUpdateAPIView.as_view(), name='lesson-update'),
                   path('api/lessons/<int:pk>/delete/', LessonDeleteAPIView.as_view(), name='lesson-delete'),
+                  path('api/subscribe/', SubscriptionAPIView.as_view(), name='subscribe'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
